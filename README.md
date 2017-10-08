@@ -4,14 +4,14 @@ ___techblog__のスマートニュース版みたいの作る___
 ### server 
 Golang
 ### front 
-no
+swift
 
 ## ToDo
 - [x] tech blog をまとめる
 - [x] tech blog スクレイピング
 - [x] 取得した記事をDB格納
 - [x] API設計
-- [] dbconfig.yml
+- [ ] dbconfig.yml
 
 ## API
 /api/articles/
