@@ -8,7 +8,7 @@
 
 import UIKit
 
-var address = "http://192.168.10.4:8080"
+var address = "http://localhost:8080"
 
 class ViewController: UIViewController {
     
