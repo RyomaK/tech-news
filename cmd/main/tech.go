@@ -13,7 +13,7 @@ func main() {
 	log.Printf("Start Go HTTP Server")
 
 	//ネットつながナイトエラー出る
-	//go controller.UpdateDB()
+	go controller.UpdateDB()
 
 	http.HandleFunc("/api/articles/", controller.JsonGetArticles)
 

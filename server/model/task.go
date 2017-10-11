@@ -17,7 +17,7 @@ func NewDBConn() *sql.DB {
 }
 
 func AllArticles(db *sql.DB) []Article {
-	rows, _ := db.Query("SELECT * from articles")
+	rows, _ := db.Query("SELECT * from articles order by posted_at desc ")
 	articles, err := ScanArticles(rows)
 	if err != nil {
 		fmt.Errorf("err article all : %v", err)
@@ -26,7 +26,7 @@ func AllArticles(db *sql.DB) []Article {
 }
 
 func CompanyArticles(db *sql.DB, company string) []Article {
-	rows, _ := db.Query(`SELECT * from articles where company = ? `, company)
+	rows, _ := db.Query(`SELECT * from articles where company = ? order by posted_at desc`, company)
 	articles, err := ScanArticles(rows)
 	if err != nil {
 		fmt.Errorf("err companey articles  : %v", err)

@@ -10,7 +10,6 @@ import (
 	"github.com/RyomaK/tech_news/server/model"
 )
 
-
 func CookPad(year int) []model.Article {
 	url := "http://techlife.cookpad.com/archive/" + strconv.Itoa(year)
 	doc, err := goquery.NewDocument(url)
@@ -21,7 +20,8 @@ func CookPad(year int) []model.Article {
 	doc.Find("section").Each(func(_ int, s *goquery.Selection) {
 		article := model.Article{Company: "cookpad"}
 		article.Title = s.Find(".entry-title-link").Text()
-		t, _ := time.Parse("2006-01-02", s.Find("time").Text())
+		date, _ := s.Find("time").Attr("datetime")
+		t, _ := time.Parse("2006-01-02", date)
 		article.PostedAt = t
 		article.URL, _ = s.Find(".entry-title-link").Attr("href")
 		article.Text = s.Find(".entry-description").Text()
@@ -40,7 +40,8 @@ func NewCookPad(year int) model.Article {
 	article := model.Article{Company: "cookpad"}
 	doc.Find("section").EachWithBreak(func(_ int, s *goquery.Selection) bool {
 		article.Title = s.Find(".entry-title-link").Text()
-		t, _ := time.Parse("2006-01-02", s.Find("time").Text())
+		date, _ := s.Find("time").Attr("datetime")
+		t, _ := time.Parse("2006-01-02", date)
 		article.PostedAt = t
 		article.URL, _ = s.Find(".entry-title-link").Attr("href")
 		article.Text = s.Find(".entry-description").Text()

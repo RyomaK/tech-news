@@ -20,7 +20,8 @@ func Voyage(year int) []model.Article {
 	doc.Find("section").Each(func(_ int, s *goquery.Selection) {
 		article := model.Article{Company: "voyage"}
 		article.Title = s.Find(".entry-title-link").Text()
-		t, _ := time.Parse("2006-01-02", s.Find("time").Text())
+		date, _ := s.Find("time").Attr("datetime")
+		t, _ := time.Parse("2006-01-02", date)
 		article.PostedAt = t
 		article.URL, _ = s.Find(".entry-title-link").Attr("href")
 		article.Text = s.Find(".entry-description").Text()
@@ -39,7 +40,8 @@ func NewVoyage(year int) model.Article {
 	article := model.Article{Company: "voyage"}
 	doc.Find("section").EachWithBreak(func(_ int, s *goquery.Selection) bool {
 		article.Title = s.Find(".entry-title-link").Text()
-		t, _ := time.Parse("2006-01-02", s.Find("time").Text())
+		date, _ := s.Find("time").Attr("datetime")
+		t, _ := time.Parse("2006-01-02", date)
 		article.PostedAt = t
 		article.URL, _ = s.Find(".entry-title-link").Attr("href")
 		article.Text = s.Find(".entry-description").Text()
