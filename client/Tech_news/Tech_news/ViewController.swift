@@ -1,14 +1,7 @@
-//
-//  ViewController.swift
-//  Tech_news
-//
-//  Created by 栗栖遼馬 on 2017/10/05.
-//  Copyright © 2017年 Ryoma. All rights reserved.
-//
 
 import UIKit
 
-var address = "http://192.168.10.4:8080"
+var address = "http://localhost:8080"
 
 class ViewController: UIViewController {
     
