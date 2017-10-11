@@ -1,10 +1,3 @@
-//
-//  CyberViewController.swift
-//  Tech_news
-//
-//  Created by 栗栖遼馬 on 2017/10/05.
-//  Copyright © 2017年 Ryoma. All rights reserved.
-//
 
 import UIKit
 
@@ -131,7 +124,7 @@ class CyberViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     
     @objc func delay(){
-        let url:String =  address + "/api/articles/?company=company=cyber%20agent"
+        let url:String =  address + "/api/articles/?company=cyber%20agent"
         let urltoSend:URL = URL(string:url)!
         articles = []
         do {
@@ -145,6 +138,8 @@ class CyberViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         tableView.reloadData()
         refleshControl.endRefreshing()
     }
+    
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
