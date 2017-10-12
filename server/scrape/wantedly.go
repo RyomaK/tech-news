@@ -5,6 +5,8 @@ import (
 
 	"time"
 
+	"strings"
+
 	"github.com/PuerkitoBio/goquery"
 	"github.com/RyomaK/tech_news/server/model"
 )
@@ -18,7 +20,7 @@ func Wantedly() []model.Article {
 	articles := []model.Article{}
 	doc.Find(".post-space-item").Each(func(_ int, s *goquery.Selection) {
 		article := model.Article{Company: "wantedly"}
-		article.Title = s.Find(".post-title").Text()
+		article.Title = strings.Replace(s.Find(".post-title").Text(), "/n", "", -1)
 		article.PostedAt = time.Now()
 		comURL, _ := s.Find(".post-content > a ").Attr("href")
 		article.URL = "https://www.wantedly.com" + comURL
@@ -37,7 +39,7 @@ func NewWantedly() model.Article {
 	}
 	article := model.Article{Company: "wantedly"}
 	doc.Find(".post-space-item").Each(func(_ int, s *goquery.Selection) {
-		article.Title = s.Find(".post-title").Text()
+		article.Title = strings.Replace(s.Find(".post-title").Text(), "/n", "", -1)
 		article.PostedAt = time.Now()
 		comURL, _ := s.Find(".post-content > a ").Attr("href")
 		article.URL = "https://www.wantedly.com" + comURL

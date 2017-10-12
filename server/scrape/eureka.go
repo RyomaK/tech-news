@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"time"
 
+	"strings"
+
 	"github.com/PuerkitoBio/goquery"
 	"github.com/RyomaK/tech_news/server/model"
 )
@@ -16,7 +18,7 @@ func Eureka() []model.Article {
 	articles := []model.Article{}
 	doc.Find(".articleWrap").Each(func(_ int, s *goquery.Selection) {
 		article := model.Article{Company: "eureka"}
-		article.Title = s.Find(".articleTitle > a ").Text()
+		article.Title = strings.Replace(s.Find(".articleTitle > a ").Text(), "/n", "", -1)
 		if err != nil {
 			fmt.Print("title err")
 		}
@@ -41,7 +43,7 @@ func NewEureka() model.Article {
 	}
 	article := model.Article{Company: "eureka"}
 	doc.Find(".articleWrap").EachWithBreak(func(_ int, s *goquery.Selection) bool {
-		article.Title = s.Find(".articleTitle > a ").Text()
+		article.Title = strings.Replace(s.Find(".articleTitle > a ").Text(), "/n", "", -1)
 		if err != nil {
 			fmt.Print("title err")
 		}

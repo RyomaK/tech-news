@@ -20,7 +20,7 @@ func Ajito() []model.Article {
 	articles := []model.Article{}
 	doc.Find(".post-preview").Each(func(_ int, s *goquery.Selection) {
 		article := model.Article{Company: "ajito"}
-		article.Title = s.Find(".post-title").Text()
+		article.Title = strings.Replace(s.Find(".post-title").Text(), "/n", "", -1)
 		t, _ := time.Parse(" 2006 Jan 2", getDate(strings.TrimSpace(s.Find(".post-meta").Text())))
 		article.PostedAt = t
 		article.URL, _ = s.Find(".post-preview > a").Attr("href")
@@ -44,7 +44,7 @@ func NewAjito() model.Article {
 	}
 	article := model.Article{Company: "ajito"}
 	doc.Find(".post-preview").EachWithBreak(func(_ int, s *goquery.Selection) bool {
-		article.Title = s.Find(".post-title").Text()
+		article.Title = strings.Replace(s.Find(".post-title").Text(), "/n", "", -1)
 		t, _ := time.Parse(" 2006 Jan 2", getDate(strings.TrimSpace(s.Find(".post-meta").Text())))
 		article.PostedAt = t
 		article.URL, _ = s.Find(".post-preview > a").Attr("href")

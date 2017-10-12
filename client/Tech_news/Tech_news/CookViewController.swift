@@ -86,7 +86,7 @@ class CookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         dotsView.isHidden = true
         
         //jsonパース
-        let url:String = "http://192.168.10.4:8080/api/articles/?company=cookpad"
+        let url:String = address + "/api/articles/?company=cookpad"
         let urltoSend:URL = URL(string:url)!
         articles = []
         do {

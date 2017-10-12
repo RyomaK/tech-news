@@ -20,7 +20,7 @@ func SmartNews() []model.Article {
 	articles := []model.Article{}
 	doc.Find(".li").Each(func(_ int, s *goquery.Selection) {
 		article := model.Article{Company: "smartnews"}
-		article.Title = s.Find(".title > a").Text()
+		article.Title = strings.Replace(s.Find(".title > a").Text(), "/n", "", -1)
 		article.PostedAt = getDateForSmart(s.Find("time").Text())
 		article.URL, _ = s.Find(".title > a").Attr("href")
 		article.Text = s.Find(".summary").Text()
@@ -44,7 +44,7 @@ func NewSmartNews() model.Article {
 	}
 	article := model.Article{Company: "smartnews"}
 	doc.Find(".li").EachWithBreak(func(_ int, s *goquery.Selection) bool {
-		article.Title = s.Find(".title > a").Text()
+		article.Title = strings.Replace(s.Find(".title > a").Text(), "/n", "", -1)
 		article.PostedAt = getDateForSmart(s.Find("time").Text())
 		article.URL, _ = s.Find(".title > a").Attr("href")
 		article.Text = s.Find(".summary").Text()
