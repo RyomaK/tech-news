@@ -10,11 +10,8 @@ import (
 )
 
 func main() {
-	db, err := model.NewDBConn()
+	db := model.NewDBConn()
 	defer db.Close()
-	if err != nil {
-		fmt.Errorf("db err : %v", err)
-	}
 	//記事
 	insertData(db, scrape.Ajito())
 	insertData(db, scrape.CookPad(2017))
