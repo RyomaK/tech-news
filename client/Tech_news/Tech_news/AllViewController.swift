@@ -154,11 +154,13 @@ class AllViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style:.subtitle, reuseIdentifier: "cell")
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
         
         cell.selectionStyle = .none
         //cell.backgroundColor= UIColor.clear
-        cell.textLabel?.text = articles![indexPath.row].title
+        //改行消さないと表示できない
+        cell.textLabel?.text = String(articles![indexPath.row].title.filter { !"\n\r".contains($0) })
+        
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
         cell.textLabel?.textColor = UIColor.black
         

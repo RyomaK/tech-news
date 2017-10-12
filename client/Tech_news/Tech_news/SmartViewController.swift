@@ -162,7 +162,7 @@ class SmartViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         cell.textLabel?.text = articles![indexPath.row].title
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
         cell.textLabel?.textColor = UIColor.black
-        
+        //改行はtableのtextに入らない
         cell.detailTextLabel?.text = String(articles![indexPath.row].text.filter { !"\n\r".contains($0) })
         cell.detailTextLabel?.font = UIFont.boldSystemFont(ofSize: 9.0)
         cell.detailTextLabel?.textColor = UIColor.darkGray

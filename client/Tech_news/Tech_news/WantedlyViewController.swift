@@ -156,6 +156,7 @@ class WantedlyViewController: UIViewController,UITableViewDelegate,UITableViewDa
         //cell.backgroundColor= UIColor.clear
         //改行消さないと表示できない
         cell.textLabel?.text = String(articles![indexPath.row].title.filter { !"\n\r".contains($0) })
+        
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
         cell.textLabel?.textColor = UIColor.black
         
