@@ -94,10 +94,11 @@ class AllViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         articles = []
         do {
             let data = try Data(contentsOf: urltoSend, options: [])
-            //let rss = try decoder.decode([Article].self, from: data)
+            Thread.sleep(forTimeInterval: 0.01)
             articles = try JSONDecoder().decode([Article].self, from: data)
-            //print(rss)
+           
         }catch{
+            
             print(error)
         }
         tableView.reloadData()

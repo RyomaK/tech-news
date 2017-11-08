@@ -44,7 +44,7 @@ class ViewController: UIViewController {
             .useMenuLikeSegmentedControl(false),
             .titleTextSizeBasedOnMenuItemWidth(true),
             .menuItemWidthBasedOnTitleTextWidth(true),
-            .menuItemSeparatorPercentageHeight(0.1),
+            .menuItemSeparatorPercentageHeight(0.1)
         ]
         
         pageMenu = CAPSPageMenu(viewControllers: controllerArray,
