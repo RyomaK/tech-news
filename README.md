@@ -36,3 +36,13 @@ swift
 - [smart news](https://developer.smartnews.com/blog/)
 - [wantedly](https://www.wantedly.com/feed/s/wantedly_engineers)
 - [サイバーエージェント](https://developers.cyberagent.co.jp/blog/)
+
+### 起動
+```bash
+//db起動
+systemctl start mariadb.service
+//iptables　設定
+sudo iptables -A INPUT -p tcp --dport (port_mum) -j ACCEPT
+sudo systemctl restart iptables
+//起動
+nohup ./tech &
